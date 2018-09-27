@@ -1,8 +1,8 @@
 {
-  "name": "apptwo",
+  "name": "wemall-web",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Mynameisfwk <2239657654@qq.com>",
+  "author": "wangyong <382247015@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
