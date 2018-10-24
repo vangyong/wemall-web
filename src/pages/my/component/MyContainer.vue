@@ -7,11 +7,11 @@
       </div>
 
       <div class="container-integral">
-          <p>
+          <p @click="get1()">
               <span>0</span>
               <span>优惠券</span>
           </p>
-          <p>
+          <p @click="get2()">
               <span>0</span>
               <span>换鼓励金</span>
           </p>
@@ -33,7 +33,7 @@
              </p>
          </div>
      </router-link>
-    
+
       <div class="container-con" id="transition">
           <router-link to="/MyCollection" class="con">
                  <div class="con-left">
@@ -122,6 +122,25 @@ export default {
          return jifeng;
       }
   },
+  methods:{
+    get1:function(){
+      //http://localhost:13000/v1/user/1
+      this.$http.get('/v1/user/1').then(response => {
+        console.log(response.data);
+        // this.someData = response.body;
+      }, response => {
+        console.log("error");
+      });
+    },
+    get2:function() {
+      this.$http.get('/v1/user/2').then(response => {
+        console.log(response.data);
+        // this.someData = response.body;
+      }, response => {
+        console.log("error");
+      });
+    }
+  }
 }
 </script>
 
@@ -158,13 +177,13 @@ export default {
         display flex
         justify-content center
         align-items center
-       
+
         p{
             width 25%
             display flex
             flex-direction column
             margin-top .3rem
-           
+
             img{
                 width .8rem
                 height .8rem

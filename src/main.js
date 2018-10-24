@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import store from './vuex/index'
 import Navigation from 'vue-navigation'
 import Vuelazyload from 'vue-lazyload'
- 
+
 Vue.use(Navigation, {router, store})
 
 Vue.use(VueLazyLoad,{
