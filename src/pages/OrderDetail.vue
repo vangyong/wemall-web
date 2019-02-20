@@ -89,10 +89,10 @@
 import axios from "axios";
 import OrderHeader from "../common/Header";
 export default {
-  name: "o1",
+  name: "OrderDetail",
   data() {
     return {
-      o1: []
+      OrderDetails: []
     };
   },
   components: {
