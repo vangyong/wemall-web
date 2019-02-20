@@ -6,7 +6,7 @@
                 <li v-for="(goodDetail,index) in goodDetails" :key="index">
                     <div class="goodDetaiSwipe">
                         <mt-swipe :auto="4000">
-                            <mt-swipe-item v-for="list in GoodDetail.homeSwipe">
+                            <mt-swipe-item v-for="list in GoodDetail.homeBright">
                                 <img :src="list.swipe" alt="图片">
                             </mt-swipe-item>
                         </mt-swipe>
