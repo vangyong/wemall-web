@@ -9,8 +9,8 @@
 
 <script>
 import axios from 'axios';
-import NewsHeader from '../../pages/News/component/NewsHeader'
-import NewsContainer from '../../pages/News/component/NewsContainer'
+import NewsHeader from '../../pages/news/component/NewsHeader'
+import NewsContainer from '../../pages/news/component/NewsContainer'
 import NewsFooter from '../Footer'
 export default {
     name:"information",
