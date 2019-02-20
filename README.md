@@ -23,11 +23,14 @@ vue全家桶 vue2.0+vuex+axios+better-scroll还有就是miut-ui组件库
 # 安装项目依赖
 npm install
 
-# 启动服务 访问http://localhost:8080
+# 启动服务 访问http://localhost:12001
 npm run dev
 
 # 编译打包
 npm run build
+
+# 后台运行
+nohup npm run dev >/dev/null 2>&1 &
 
 接口调用个人中心
 优惠券
