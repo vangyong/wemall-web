@@ -12,9 +12,9 @@ import newsDetail from '../pages/news/NewsDetail'
 import parts from '../pages/Parts'
 import change from '../pages/detail/Change'
 import success from '../common/Success'
-import MyCollection from '../pages/my/MyCollection'
+import myCollection from '../pages/my/MyCollection'
 import classify from "../pages/classify/Classify"
-import OrderDetails from "../pages/OrderDetails"
+import OorderDetails from "../pages/OrderDetails"
 import pay from "../pages/pay/Pay"
 import address from "../pages/Address"
 import add_address from "../pages/AddAddress"
@@ -51,9 +51,9 @@ export default new Router({
     { path: '/parts', name: 'parts', component: parts },
     { path: '/change', name: 'change', component: change },
     { path: '/success',name:'success',component:success},
-    { path: '/MyCollection',name:'MyCollection',component:MyCollection},
+    { path: '/myCollection',name:'myCollection',component:MyCollection},
     { path: '/classify',name:'classify',component:classify},
-    { path: '/OrderDetails',name:'OrderDetails',component:OrderDetails},
+    { path: '/orderDetails',name:'orderDetails',component:OrderDetails},
     {
       path: '/pay',
       name:'pay',
