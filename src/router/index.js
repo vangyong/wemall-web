@@ -1,23 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/pages/home/home'
-import cart from '@/pages/Cart/cart'
-import my from '@/pages/My/my'
-import goodDetail from '@/pages/Detail/goodDetail'
-import order from '@/pages/order'
-import author from '@/pages/author'
-import choose from '@/pages/choose'
-import news from '@/pages/News/news'
-import newsDetail from '@/pages/News/newsDetail'
-import parts from '@/pages/parts'
-import change from '@/pages/Detail/Change'
+  import Home from '../pages/home/home'
+import cart from '../pages/Cart/cart'
+import my from '../pages/My/my'
+import goodDetail from '../pages/Detail/goodDetail'
+import order from '../pages/order'
+import author from '../pages/author'
+import choose from '../pages/choose'
+import news from '../pages/News/news'
+import newsDetail from '../pages/News/newsDetail'
+import parts from '../pages/parts'
+import change from '../pages/Detail/Change'
 import success from '../common/success'
-import MyCollection from '@/pages/My/MyCollection'
-import classify from "@/pages/Classify/classify"
-import OrderDetails from "@/pages/OrderDetails"
-import pay from "@/pages/pay/pay"
-import address from "@/pages/address"
-import add_address from "@/pages/add_address"
+import MyCollection from '../pages/My/MyCollection'
+import classify from "../pages/Classify/classify"
+import OrderDetails from "../pages/OrderDetails"
+import pay from "../pages/pay/pay"
+import address from "../pages/address"
+import add_address from "../pages/add_address"
 Vue.use(Router)
 
 export default new Router({
@@ -26,20 +26,20 @@ export default new Router({
     { path: '/Home', name: 'Home', component: Home,meta:{index:1} },
     { path: '/cart', name: 'cart', component: cart },
     { path: '/my', name: 'my', component: my },
-    { 
-      path: '/goodDetail', 
-      name: 'goodDetail', 
+    {
+      path: '/goodDetail',
+      name: 'goodDetail',
       component: goodDetail,
       meta:{index:0}
     },
-    { 
-      path: '/order', 
-      name: 'order', 
+    {
+      path: '/order',
+      name: 'order',
       component: order,
       children:[
        {
-        path: '/order/OrderDetails', 
-        name: '/order/OrderDetails', 
+        path: '/order/OrderDetails',
+        name: '/order/OrderDetails',
         component: OrderDetails,
        }
       ]
@@ -54,7 +54,7 @@ export default new Router({
     { path: '/MyCollection',name:'MyCollection',component:MyCollection},
     { path: '/classify',name:'classify',component:classify},
     { path: '/OrderDetails',name:'OrderDetails',component:OrderDetails},
-    { 
+    {
       path: '/pay',
       name:'pay',
       component:pay
