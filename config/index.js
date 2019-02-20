@@ -23,13 +23,13 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 13001,
+    port: 12001,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-		"/v1/": {
-        target: "http://localhost:13000",
+		"/mall/": {
+        target: "http://localhost:12000",
         logLevel: 'debug',
         changeOrigin: true
       }
