@@ -35,7 +35,7 @@
      </router-link>
 
       <div class="container-con" id="transition">
-          <router-link to="/MyCollection" class="con">
+          <router-link to="/my-collection" class="con">
                  <div class="con-left">
                   <i class="iconfont icon-collection"></i>
                   <span>我的收藏</span>

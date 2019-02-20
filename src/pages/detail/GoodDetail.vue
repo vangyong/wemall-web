@@ -3,30 +3,30 @@
     <Detail-Header title="商品详情"></Detail-Header>
       <div class="goodDetailList">
             <ul style="background: white;">
-                <li v-for="(goodDetail,index) in goodDetails" :key="index">
+                <li v-for="(goodDetail,index) in goodDetail" :key="index">
                     <div class="goodDetaiSwipe">
                         <mt-swipe :auto="4000">
-                            <mt-swipe-item v-for="list in GoodDetail.homeBright">
+                            <mt-swipe-item v-for="list in goodDetail.homeBright">
                                 <img :src="list.swipe" alt="图片">
                             </mt-swipe-item>
                         </mt-swipe>
                     </div>
                     <div class="goodDetailMain">
-                        <div class="gooDetailNumber">商品编号：{{GoodDetail.number}}</div>
-                        <div class="goodDetailName">{{GoodDetail.homeName}}</div>
+                        <div class="gooDetailNumber">商品编号：{{goodDetail.number}}</div>
+                        <div class="goodDetailName">{{goodDetail.homeName}}</div>
                         <div style="text-align: justify;font-size: 0.348rem;">
-                            <span style="margin-left:-.2rem;color:#FF4B3D;">【{{GoodDetail.homeBright}}】</span>
-                          {{GoodDetail.homeTitle}}
+                            <span style="margin-left:-.2rem;color:#FF4B3D;">【{{goodDetail.homeBright}}】</span>
+                          {{goodDetail.homeTitle}}
                         </div>
-                        <div class="goodDetailColor">{{GoodDetail.color}}</div>
-                        <div class="goodDetailPaid">￥{{GoodDetail.homePrice}}</div>
+                        <div class="goodDetailColor">{{goodDetail.color}}</div>
+                        <div class="goodDetailPaid">￥{{goodDetail.homePrice}}</div>
                     </div>
                     
                     <div class="goodDetailValue">
                         <div class="_Value">购买数量：</div>
                         <div class="_cartNumber" style="margin-left: 2rem;">
                             <a href="javascript:;" @click="jian(index)" class="goodDetailReduce">-</a>
-                            <input type="text" v-model="GoodDetail.homeValue" readonly="readonly"/>
+                            <input type="text" v-model="goodDetail.homeValue" readonly="readonly"/>
                             <a href="javascript:;" @click="jia(index)" class="goodDetailAdd">+</a>
                         </div>
                     </div>
@@ -43,14 +43,14 @@
                         <mt-tab-container v-model="selected" swipeable>
                             <mt-tab-container-item id="tab-container1">
                                <div class="goodDetailImg">
-                                   <p v-for="Image in GoodDetail.Images">
+                                   <p v-for="Image in goodDetail.Images">
                                        <img v-bind:src="Image.one" alt="详情图片">
                                     </p>
                                 </div>
                             </mt-tab-container-item>
 
                             <mt-tab-container-item id="tab-container2">
-                                <div class="peizhi" v-html="GoodDetail.homePeizhi"></div>
+                                <div class="peizhi" v-html="goodDetail.homePeizhi"></div>
                             </mt-tab-container-item>
                         </mt-tab-container>
 
@@ -61,21 +61,21 @@
                         <div class="left">
                             <div class="cart">
                                 <div class="cartlength">{{cartlength}}</div>
-                                <img src="http://p6563v2ck.bkt.clouddn.com/%E8%B4%AD%E7%89%A9%E8%BD%A6.png" >
+                                <img src="static/img/gouwuche.png" >
                                 <span>购物车</span>
                             </div>
                             <div class="collection" >
-                                <div class="collection-box" @click="addCollection(GoodDetail)" v-show="!$store.state.ces">
+                                <div class="collection-box" @click="addCollection(goodDetail)" v-show="!$store.state.ces">
                                     <i class="iconfont icon-collection"></i>
                                     <span>收藏</span>
                                 </div>
-                                <div class="collection-box" @click="addCollection(GoodDetail)" v-show="$store.state.ces">
+                                <div class="collection-box" @click="addCollection(goodDetail)" v-show="$store.state.ces">
                                     <i class="iconfont icon-shoucangxuanzhong1" style="color:red"></i>
                                     <span style="color:red">取消</span>
                                 </div>
                             </div>
                             <div class="shop">
-                                <img src="http://p6563v2ck.bkt.clouddn.com/%E5%BA%97%E9%93%BA_2.png" >
+                                <img src="static/img/shop.png" >
                                 <!-- <i class="iconfont icon-xuanzekuangxuanzhong" v-show="!$store.state.collection"></i>
                                 <i class="iconfont icon-xuanzekuangxuanzhong" v-show="$store.state.collection" style="color:red"></i> -->
                                 <span>店铺</span>
@@ -83,10 +83,10 @@
                         </div>
                         <div class="rigth">
                             <div class="add">
-                                <a href="javascript:void(0);" @click="add(GoodDetail)">加入购物车</a>
+                                <a href="javascript:void(0);" @click="add(goodDetail)">加入购物车</a>
                             </div>
                             <div class="purchase">
-                                <a href="javascript:void(0);" @click="pay(GoodDetail.id,GoodDetail.homeValue)">提交订单</a>
+                                <a href="javascript:void(0);" @click="pay(goodDetail.id,goodDetail.homeValue)">提交订单</a>
                             </div>
                         </div>
                        
@@ -111,7 +111,7 @@ export default {
       active: "1",
       goodDetailHeader: "商品详情",
       selected: "tab-container1",
-      goodDetails: [],
+      goodDetail: [],
       cartlength: 0
     };
   },
@@ -122,8 +122,8 @@ export default {
   computed: {   
     paid: function() {
       var paid = 0;
-      for (var i in this.goodDetails) {
-        paid += this.goodDetails[i].value * this.goodDetails[i].price;
+      for (var i in this.goodDetail) {
+        paid += this.goodDetail[i].value * this.goodDetail[i].price;
       }
       return paid;
     }
@@ -147,7 +147,7 @@ export default {
     axios.get("/static/ceshi.json").then(res => {
       for (var i = 0; i < res.data.data.home.length;i++){
         if (res.data.data.home[i].id == id ) {
-            _this.goodDetails.push(res.data.data.home[i]);
+            _this.goodDetail.push(res.data.data.home[i]);
         }
       }
     });
@@ -155,7 +155,7 @@ export default {
     axios.get("/static/ceshi.json").then(res => {
       for (var i = 0; i < res.data.data.set.length;i++){
         if (res.data.data.set[i].id == id ) {
-            _this.goodDetails.push(res.data.data.set[i]);
+            _this.goodDetail.push(res.data.data.set[i]);
         }
       }
     });
@@ -202,14 +202,14 @@ export default {
       }
     },
     jia: function(index) {
-      this.goodDetails[index].homeValue++;
+      this.goodDetail[index].homeValue++;
   
     },
     jian: function(index) {
-      if (this.goodDetails[index].homeValue == 1) {
-        this.goodDetails[index].homeValue = 1;
+      if (this.goodDetail[index].homeValue == 1) {
+        this.goodDetail[index].homeValue = 1;
       } else {
-        this.goodDetails[index].homeValue--;
+        this.goodDetail[index].homeValue--;
       }
     },
     //返回上一级
@@ -232,14 +232,14 @@ export default {
         // });
       // alert(`成功支付了${this.paid}元`)
     //   var data = {
-    //     id: this.goodDetails[index].id,
-    //     name: this.goodDetails[index].homeName,
-    //     price: this.goodDetails[index].homePrice,
-    //     image: this.goodDetails[index].homeImg,
-    //     value: this.goodDetails[index].homeValue,
-        // order: this.goodDetails[index].order,
-        // color: this.goodDetails[index].color,
-        // number: this.goodDetails[index].number
+    //     id: this.goodDetail[index].id,
+    //     name: this.goodDetail[index].homeName,
+    //     price: this.goodDetail[index].homePrice,
+    //     image: this.goodDetail[index].homeImg,
+    //     value: this.goodDetail[index].homeValue,
+        // order: this.goodDetail[index].order,
+        // color: this.goodDetail[index].color,
+        // number: this.goodDetail[index].number
     //   };
     //   this.$store.commit("addorder", data);
     // }

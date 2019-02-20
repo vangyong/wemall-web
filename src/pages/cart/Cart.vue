@@ -5,27 +5,27 @@
              <ul>
                 <li v-for="(cart,index) in carts" class="cartList">
                      <!-- 购物车单选 -->
-                     <div class="select" @click="danxuan(Cart)" >
-                        <i class="iconfont icon-xuanzekuangmoren"   v-show="!Cart.danx1uan"></i>
-                        <i class="iconfont icon-xuanzekuangxuanzhong" v-show="Cart.danx1uan" style="color:#25b5fe"></i>
+                     <div class="select" @click="danxuan(cart)" >
+                        <i class="iconfont icon-xuanzekuangmoren"   v-show="!cart.danx1uan"></i>
+                        <i class="iconfont icon-xuanzekuangxuanzhong" v-show="cart.danx1uan" style="color:#25b5fe"></i>
                     </div>
                    
 
                     <!-- 购物车商品信息 -->
                      <div class="cartImage">
-                        <img :src="Cart.img" >
+                        <img :src="cart.img" >
                     </div>
                     <div class="cartInformation">
-                        <div class="cartName">{{Cart.name}}
+                        <div class="cartName">{{cart.name}}
                           <a href="javascript:;" class="iconfont icon-huishouzhan7"  @click="shanchu(index)" ></a>
                         </div>
-                        <p class="cartPrice">￥{{Cart.price}}</p>
+                        <p class="cartPrice">￥{{cart.price}}</p>
                     </div>
 
                     <!-- 购物车商品数量 -->
                     <div class="cartNumber">
                         <a href="javascript:;" @click="reduce(index)" class="add">-</a>
-                        <input type="text" v-model="Cart.value" readonly="readonly"/>
+                        <input type="text" v-model="cart.value" readonly="readonly"/>
                         <a href="javascript:;" @click="add(index)" class="reduce">+</a>
                     </div>
 
@@ -65,7 +65,7 @@ import { Toast } from "mint-ui";
 import { mapState, mapMutations, mapGetters } from "vuex";
 import CartHeader from '../../common/Header'
 export default {
-  name: "Cart.vue",
+  name: "Cart",
   data() {
     return {
       qx: false
@@ -82,8 +82,8 @@ export default {
     sum: function() {
       var sum = 0;
       this.$store.state.carts.forEach(cart => {
-        if (Cart.danx1uan) {
-          sum += Cart.price * Cart.value;
+        if (cart.danx1uan) {
+          sum += cart.price * cart.value;
         }
       });
       return sum;
@@ -91,8 +91,8 @@ export default {
     sumValue() {
       var sumValue = 0;
       this.$store.state.carts.forEach(cart => {
-        if (Cart.danx1uan) {
-          sumValue += parseInt(Cart.value);
+        if (cart.danx1uan) {
+          sumValue += parseInt(cart.value);
         }
       });
       return sumValue;
@@ -102,9 +102,9 @@ export default {
     ...mapMutations(["shanchu", "add", "reduce", "settlement"]),
 
     danxuan(cart) {
-      console.log(Cart);
-      Cart.danx1uan = !Cart.danx1uan;
-      if (!Cart.danx1uan) {
+      console.log(cart);
+      cart.danx1uan = !cart.danx1uan;
+      if (!cart.danx1uan) {
         this.qx = false;
       }
     },
@@ -112,11 +112,11 @@ export default {
       this.qx = !this.qx;
       if (this.qx) {
         this.$store.state.carts.forEach(cart => {
-          Cart.danx1uan = true;
+          cart.danx1uan = true;
         });
       } else {
         this.$store.state.carts.forEach(cart => {
-          Cart.danx1uan = false;
+          cart.danx1uan = false;
         });
       }
     }
