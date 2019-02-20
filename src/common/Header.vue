@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-      <div class="header-left">
-          <!-- <i class="iconfont icon-zuojiantou"></i> -->
+      <div class="header-left" @click="$router.go(-1)">
+          <i class="iconfont icon-zuojiantou"></i>
       </div>
       <div class="header-in">{{title}}</div>
       <div class="header-rigth"></div>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name:"header",
+  name:"Header",
   props:[
       "title"
   ]
@@ -22,7 +22,8 @@ export default {
     width 100%
     height 1.45rem
     background white
-    // position fixed
+    position fixed
+    z-index 1
     .header-left
         width 10%
         height 100%

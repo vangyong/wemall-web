@@ -11,7 +11,7 @@
 import axios from 'axios';
 import NewsHeader from '../../pages/News/component/NewsHeader'
 import NewsContainer from '../../pages/News/component/NewsContainer'
-import NewsFooter from '../../pages/footer'
+import NewsFooter from '../Footer'
 export default {
     name:"information",
     components:{

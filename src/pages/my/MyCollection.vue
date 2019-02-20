@@ -92,7 +92,7 @@ export default {
     },
     goDetalis(id) {
       this.$router.push({
-        path: "goodDetail",
+        path: "GoodDetail.vue",
         query: {
           id: id
         }

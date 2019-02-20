@@ -28,10 +28,10 @@ import {
   TabContainer,
   TabContainerItem
 } from "mint-ui";
-import DetailHeader from '../../common/header';
+import DetailHeader from '../../common/Header';
 import { mapGetters, mapMutations } from "vuex";
 export default {
-  name: "newsDetail",
+  name: "NewsDetail",
   data() {
     return {
       newsDetail: []

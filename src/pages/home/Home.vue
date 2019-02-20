@@ -16,7 +16,7 @@ import { MessageBox } from 'mint-ui';
 import HomeSwipe from './component/HomeSwipe';
 import HomeList from './component/HomeList';
 import HomeContainer from './component/HomeContainer'
-import HomeFooter from '../../pages/footer'
+import HomeFooter from '../Footer'
 import axios from 'axios';
 export default {
   name:"Home",

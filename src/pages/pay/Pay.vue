@@ -365,7 +365,7 @@
 <script>
 import { Toast } from "mint-ui";
 import { mapGetters, mapMutations } from "vuex";
-import PayHeader from "../../common/header";
+import PayHeader from "../../common/Header";
 import axios from "axios";
 export default {
   name: "pay",

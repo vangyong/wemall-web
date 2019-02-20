@@ -25,8 +25,8 @@ const matutaions={
     },
     //地址
     [type.SET_ADDRESS](state,data){
-        state.address.push(data)
-        localStorage.setItem("address",JSON.stringify(state.address));
+        state.Address.push(data)
+        localStorage.setItem("Address.vue",JSON.stringify(state.Address));
     },
     //文章删除
     del:(state,index)=>{
@@ -44,8 +44,8 @@ const matutaions={
     },
     laji:(state,index)=>{
         MessageBox.confirm('确定删除收货地址么？').then(action=>{
-            state.address.splice(index,1)
-            localStorage.setItem("address",JSON.stringify(state.address));
+            state.Address.splice(index,1)
+            localStorage.setItem("Address.vue",JSON.stringify(state.Address));
         }) 
     },
     //购物车删除

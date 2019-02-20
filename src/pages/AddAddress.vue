@@ -30,11 +30,11 @@
 </template>
 
 <script>
-import AddressHeader from "../common/header";
+import AddressHeader from "../common/Header";
 import { mapGetters, mapMutations } from "vuex";
 import { Toast } from "mint-ui";
 export default {
-  name: "add_address",
+  name: "AddAddress",
   data() {
     return {
       name: "",

@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import footer from '../../pages/footer'
-import MyHeader from '../../common/header'
+import footer from '../Footer'
+import MyHeader from '../../common/Header'
 import MyContainer from './component/MyContainer'
 export default {
-  name:"my",
+  name:"My",
   data(){
       return{
         // lists:[]

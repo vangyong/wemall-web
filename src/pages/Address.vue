@@ -6,7 +6,7 @@
                 <p class="left">配送地址</p>
                 <p class="right" @click="goAdd_address">+添加地址</p>
             </div>
-            <div class="pay-address" v-for="(list,index) in address" :key="index" :class="{active:index===$store.state.nowIndex}" @click="btn(list,index)">
+            <div class="pay-address" v-for="(list,index) in Address" :key="index" :class="{active:index===$store.state.nowIndex}" @click="btn(list,index)">
                 <p class="address-box">
                     <span class="name">收货人：{{list.name}}</span>
                     <span class="phone">{{list.phone}}</span>
@@ -25,7 +25,7 @@
 
 
 <script>
-import AddressHeader from "../common/header";
+import AddressHeader from "../common/Header";
 import { mapState, mapMutations, mapGetters } from "vuex";
 export default {
     data(){
@@ -38,10 +38,10 @@ export default {
     },
     computed: {
         address() {
-        return this.$store.state.address;
+        return this.$store.state.Address;
         },
         ...mapGetters(
-            ["this.$store.state.address"],
+            ["this.$store.state.Address.vue"],
             ["this.$store.state.nowIndex"]
         )
     },

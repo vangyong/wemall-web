@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import ClassifyHeader from "../../common/header";
-import footer from "../../pages/footer";
+import ClassifyHeader from "../../common/Header";
+import footer from "../Footer";
 import axios from "axios";
 import { mapGetters } from "vuex";
 export default {
@@ -70,7 +70,7 @@ export default {
     goDetails(id) {
       console.log(id);
       this.$router.push({
-        path: "goodDetail",
+        path: "GoodDetail.vue",
         query: { id: id }
       });
     }

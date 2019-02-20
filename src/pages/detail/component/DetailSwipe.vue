@@ -15,7 +15,7 @@
                         <div class="_Value">购买数量：</div>
                         <div class="_cartNumber" style="margin-left: 2rem;">
                             <a href="javascript:;" @click="jian(index)" class="goodDetailReduce">-</a>
-                            <input type="text"   v-model="goodDetail.homeValue" readonly="readonly"/>
+                            <input type="text" v-model="GoodDetail.homeValue" readonly="readonly"/>
                             <a href="javascript:;" @click="jia(index)" class="goodDetailAdd">+</a>
                         </div>
                     </div>
@@ -32,14 +32,14 @@
                         <mt-tab-container v-model="selected" swipeable>
                             <mt-tab-container-item id="tab-container1">
                                <div class="goodDetailImg">
-                                   <p v-for="Image in goodDetail.Images">
+                                   <p v-for="Image in GoodDetail.Images">
                                        <img v-bind:src="Image.one" alt="详情图片">
                                     </p>
                                 </div>
                             </mt-tab-container-item>
 
                             <mt-tab-container-item id="tab-container2">
-                                <div class="peizhi" v-html="goodDetail.homePeizhi"></div>
+                                <div class="peizhi" v-html="GoodDetail.homePeizhi"></div>
                             </mt-tab-container-item>
                         </mt-tab-container>
 

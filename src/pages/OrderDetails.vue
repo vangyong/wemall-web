@@ -87,7 +87,7 @@
 
 <script>
 import axios from "axios";
-import OrderHeader from "../common/header";
+import OrderHeader from "../common/Header";
 export default {
   name: "o1",
   data() {

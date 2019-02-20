@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     open: function(id) {
-      this.$router.push({ path: "goodDetail", query: { id: id } });
+      this.$router.push({ path: "GoodDetail.vue", query: { id: id } });
     }
   }
 };

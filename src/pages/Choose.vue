@@ -25,7 +25,7 @@
 
 <script>
 import axios from "axios";
-import ChooseHeader from "../common/header";
+import ChooseHeader from "../common/Header";
 export default {
   name: "choose",
   data() {
@@ -50,7 +50,7 @@ export default {
   methods: {
     goDetails: function(id) {
       this.$router.push({
-        path: "goodDetail",
+        path: "GoodDetail.vue",
         query: {
           id: id
         }

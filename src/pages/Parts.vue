@@ -25,7 +25,7 @@
 
 <script>
 import axios from "axios";
-import PartsHeader from "../common/header";
+import PartsHeader from "../common/Header";
 import { Navbar, TabItem } from "mint-ui";
 export default {
   data() {
@@ -52,7 +52,7 @@ export default {
   methods: {
     goDetails: function(id) {
       this.$router.push({
-        path: "goodDetail",
+        path: "GoodDetail.vue",
         query: {
           id: id
         }

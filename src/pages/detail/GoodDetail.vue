@@ -6,27 +6,27 @@
                 <li v-for="(goodDetail,index) in goodDetails" :key="index">
                     <div class="goodDetaiSwipe">
                         <mt-swipe :auto="4000">
-                            <mt-swipe-item v-for="list in goodDetail.homeSwipe"> 
+                            <mt-swipe-item v-for="list in GoodDetail.homeSwipe">
                                 <img :src="list.swipe" alt="图片">
                             </mt-swipe-item>
                         </mt-swipe>
                     </div>
                     <div class="goodDetailMain">
-                        <div class="gooDetailNumber">商品编号：{{goodDetail.number}}</div>
-                        <div class="goodDetailName">{{goodDetail.homeName}}</div>
+                        <div class="gooDetailNumber">商品编号：{{GoodDetail.number}}</div>
+                        <div class="goodDetailName">{{GoodDetail.homeName}}</div>
                         <div style="text-align: justify;font-size: 0.348rem;">
-                            <span style="margin-left:-.2rem;color:#FF4B3D;">【{{goodDetail.homeBright}}】</span>
-                            {{goodDetail.homeTitle}}
+                            <span style="margin-left:-.2rem;color:#FF4B3D;">【{{GoodDetail.homeBright}}】</span>
+                          {{GoodDetail.homeTitle}}
                         </div>
-                        <div class="goodDetailColor">{{goodDetail.color}}</div>
-                        <div class="goodDetailPaid">￥{{goodDetail.homePrice}}</div>
+                        <div class="goodDetailColor">{{GoodDetail.color}}</div>
+                        <div class="goodDetailPaid">￥{{GoodDetail.homePrice}}</div>
                     </div>
                     
                     <div class="goodDetailValue">
                         <div class="_Value">购买数量：</div>
                         <div class="_cartNumber" style="margin-left: 2rem;">
                             <a href="javascript:;" @click="jian(index)" class="goodDetailReduce">-</a>
-                            <input type="text"   v-model="goodDetail.homeValue" readonly="readonly"/>
+                            <input type="text" v-model="GoodDetail.homeValue" readonly="readonly"/>
                             <a href="javascript:;" @click="jia(index)" class="goodDetailAdd">+</a>
                         </div>
                     </div>
@@ -43,14 +43,14 @@
                         <mt-tab-container v-model="selected" swipeable>
                             <mt-tab-container-item id="tab-container1">
                                <div class="goodDetailImg">
-                                   <p v-for="Image in goodDetail.Images">
+                                   <p v-for="Image in GoodDetail.Images">
                                        <img v-bind:src="Image.one" alt="详情图片">
                                     </p>
                                 </div>
                             </mt-tab-container-item>
 
                             <mt-tab-container-item id="tab-container2">
-                                <div class="peizhi" v-html="goodDetail.homePeizhi"></div>
+                                <div class="peizhi" v-html="GoodDetail.homePeizhi"></div>
                             </mt-tab-container-item>
                         </mt-tab-container>
 
@@ -65,11 +65,11 @@
                                 <span>购物车</span>
                             </div>
                             <div class="collection" >
-                                <div class="collection-box" @click="addCollection(goodDetail)"  v-show="!$store.state.ces">
+                                <div class="collection-box" @click="addCollection(GoodDetail)" v-show="!$store.state.ces">
                                     <i class="iconfont icon-collection"></i>
                                     <span>收藏</span>
                                 </div>
-                                <div class="collection-box" @click="addCollection(goodDetail)"  v-show="$store.state.ces">
+                                <div class="collection-box" @click="addCollection(GoodDetail)" v-show="$store.state.ces">
                                     <i class="iconfont icon-shoucangxuanzhong1" style="color:red"></i>
                                     <span style="color:red">取消</span>
                                 </div>
@@ -83,10 +83,10 @@
                         </div>
                         <div class="rigth">
                             <div class="add">
-                                <a href="javascript:void(0);" @click="add(goodDetail)">加入购物车</a>
+                                <a href="javascript:void(0);" @click="add(GoodDetail)">加入购物车</a>
                             </div>
                             <div class="purchase">
-                                <a href="javascript:void(0);" @click="pay(goodDetail.id,goodDetail.homeValue)">提交订单</a>
+                                <a href="javascript:void(0);" @click="pay(GoodDetail.id,GoodDetail.homeValue)">提交订单</a>
                             </div>
                         </div>
                        
@@ -105,7 +105,7 @@ import DetailHeader from "./component/DetailHeader";
 import DetailLayer from "./component/DetailLayer";
 import axios from "axios";
 export default {
-  name: "goodDetail",
+  name: "GoodDetail.vue",
   data() {
     return {
       active: "1",
