@@ -105,7 +105,7 @@ import DetailHeader from "./component/DetailHeader";
 import DetailLayer from "./component/DetailLayer";
 import axios from "axios";
 export default {
-  name: "GoodDetail.vue",
+  name: "GoodDetail",
   data() {
     return {
       active: "1",

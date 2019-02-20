@@ -12,9 +12,9 @@
 
 <script>
 import axios from "axios";
-import ChangeHeader from '../Detail/component/DetailHeader'
+import ChangeHeader from '../detail/component/DetailHeader'
 export default {
-  name:"change",
+  name:"Change",
   data(){
       return{
           change:[]
