@@ -2,7 +2,7 @@
   <div class="home-swiper">
         <mt-swipe :auto="4000">
           <mt-swipe-item v-for="(list,index) in swiper" :key="index">
-            <img :src="list.img">
+            <img :src= "getImgUrl(list.imgUrl)">
           </mt-swipe-item>
         </mt-swipe>
   </div>
@@ -13,15 +13,26 @@ export default {
   name:"HomeSwipe",
   data(){
     return{
-      swiper:[
-        {
-          img:"https://shopstatic.vivo.com.cn/vivoshop/commodity/20180418/20180418104131830678_original.jpg"
-        },
-        {
-          img:"https://shopstatic.vivo.com.cn/vivoshop/commodity/20180430/20180430232146894398_original.jpg"
-        }
-      ]
+      swiper:[]
     }
+  },
+  methods:{
+    getBannerList:function(){
+      this.$http.get('/v1/mall/banner/list').then(response => {
+        this.swiper = response.data
+      }, response => {
+        console.log("getBannerList error");
+      });
+    },
+    getImgUrl:function(imgUrl) {
+      return '/v1/filecenter/download/'+imgUrl;
+    }
+  },
+  created:function(){
+
+  },
+  mounted:function(){
+    this.getBannerList()
   }
 }
 </script>

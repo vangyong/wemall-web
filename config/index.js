@@ -28,8 +28,9 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-		"/mall/": {
-        target: "http://localhost:12000",
+		"/v1/": {
+        //target: "http://132.232.30.39:8000",
+        target: "http://localhost:8000",
         logLevel: 'debug',
         changeOrigin: true
       }
