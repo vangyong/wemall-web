@@ -65,24 +65,6 @@
               </div>
           </router-link>
 
-          <router-link to="/order" class="con">
-                 <div class="con-left">
-                  <i class="iconfont icon-share_icon"></i>
-                  <span>扫码分享</span>
-              </div>
-              <div class="con-rigth">
-                  <i class="iconfont icon-youjiantou"></i>
-              </div>
-          </router-link>
-          <a target="_blank" href="http://www.myfwk.cn" class="con">
-                 <div class="con-left">
-                  <i class="iconfont icon-bangzhuguanyuwomen"></i>
-                  <span>关于我</span>
-              </div>
-              <div class="con-rigth">
-                  <i class="iconfont icon-youjiantou"></i>
-              </div>
-          </a>
       </div>
   </div>
 </template>
@@ -96,18 +78,18 @@ export default {
           container:[
               {
                   img:"/static/img/111.png",
-                  name:"待付款"
+                  name:"店铺管理"
               },
                {
                   img:"/static/img/222.png",
-                  name:"待收货"
+                  name:"商品管理"
               },
                {
                   img:"/static/img/333.png",
-                  name:"待评价"
+                  name:"订单管理"
               }, {
                   img:"/static/img/444.png",
-                  name:"退货/退款"
+                  name:"统计对账"
               },
           ]
       }

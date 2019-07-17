@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import footer from '../Footer'
+import footer from '../../common/Footer'
 import MyHeader from '../../common/Header'
 import MyContainer from './component/MyContainer'
 export default {
@@ -44,13 +44,13 @@ export default {
         background: white;
         font-size: 0.41rem;
    }
-   
+
    .myMain{
        height: 100%;
        background: white;
        margin-top: 10px;
        width: 100%;
-       
+
    }
     .MyBox{
         width: 100%;
@@ -76,7 +76,7 @@ export default {
     .myMain p{
         line-height: 75px;
     }
-  
+
    .Order i , .Order p{
        display: block;
        line-height: 55px;

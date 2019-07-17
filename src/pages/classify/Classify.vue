@@ -20,12 +20,12 @@
     </div>
 <v-footer></v-footer>
 </div>
-  
+
 </template>
 
 <script>
 import ClassifyHeader from "../../common/Header";
-import footer from "../Footer";
+import footer from "../../common/Footer";
 import axios from "axios";
 import { mapGetters } from "vuex";
 export default {

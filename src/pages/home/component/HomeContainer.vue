@@ -3,15 +3,15 @@
         <h2>爆款产品</h2>
         <div class="main_box">
           <ul>
-            <img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180405/20180405101609299910_original.jpg" width="100%">
-            <li v-for="(todo,index) in todos" :key="todo.id"   @click="open(todo.id)" >
+            <!--<img src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180405/20180405101609299910_original.jpg" width="100%">-->
+            <li v-for="(todo,index) in todos" :key="todo.goodsId"   @click="open(todo.goodsId)" >
               <div class="list">
                 <div class="image">
-                  <img v-lazy="todo.homeImg" alt="图片">
+                  <img v-lazy="getImgUrl(todo.listPictureUrl)" alt="图片">
                 </div>
-                <p class="name">{{todo.homeName}}</p>
-                <p class="nametwo">{{todo.homeNametwo}}</p>
-                <p class="Price">￥{{todo.homePrice}}</p> 
+                <p class="name">{{todo.goodsName}}</p>
+                <!--<p class="nametwo">{{todo.brief}}</p>-->
+                <p class="Price">￥{{todo.unitPrice}}</p>
               </div>
             </li>
           </ul>
@@ -28,7 +28,10 @@ export default {
   },
   methods: {
     open: function(id) {
-      this.$router.push({ path: "good-detail", query: { id: id } });
+      this.$router.push({ path: "good-detail", query: { id: id} });
+    },
+    getImgUrl:function(imgUrl) {
+      return '/v1/filecenter/download/'+imgUrl;
     }
   }
 };
@@ -49,7 +52,7 @@ export default {
 }
 
 .list {
-  height: 4.7rem;
+  height: 5.7rem;
   background: white;
   float: left;
   width: 50%;
@@ -105,8 +108,8 @@ ul li {
   background: white;
 
   img {
-    width: 2.5rem;
-    height: 2.3rem;
+    width: 4.5rem;
+    height: 4.0rem;
     display: block;
     margin: auto;
     margin-top: .5rem;

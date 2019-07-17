@@ -1,9 +1,9 @@
 <template>
   <div class="Home">
-      <div class="Homeheader"><i class="iconfont icon-VIVO"></i></div>
+      <!--<div class="Homeheader"><i class="iconfont icon-VIVO"></i></div>-->
       <!-- <div class="official"><img src="/static/img/official.png" alt="图片" style="width: 100%;height:100%"></div> -->
       <Home-Swipe></Home-Swipe>
-      <Home-List></Home-List>
+      <!--<Home-List></Home-List>-->
       <Home-Container :todos="todos"></Home-Container>
       <Home-Footer></Home-Footer>
   </div>
@@ -16,7 +16,7 @@ import { MessageBox } from 'mint-ui';
 import HomeSwipe from './component/HomeSwipe';
 import HomeList from './component/HomeList';
 import HomeContainer from './component/HomeContainer'
-import HomeFooter from '../Footer'
+import HomeFooter from '../../common/Footer'
 import axios from 'axios';
 export default {
   name:"Home",
@@ -37,9 +37,13 @@ export default {
   methods:{
     getData:function(){
       var _this=this
-      axios.get("/static/ceshi.json").then(function(res){
+      // axios.get("/static/ceshi.json").then(function(res){
+      //   //console.log(res)
+      //   _this.todos=res.data.data.home
+      // })
+      axios.get("/v1/mall/home/recommend/page").then(function(res){
         //console.log(res)
-        _this.todos=res.data.data.home
+        _this.todos=res.data.content
       })
     }
   }

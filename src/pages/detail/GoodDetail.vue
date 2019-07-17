@@ -3,54 +3,70 @@
     <Detail-Header title="商品详情"></Detail-Header>
       <div class="goodDetailList">
             <ul style="background: white;">
-                <li v-for="(goodDetail,index) in goodDetail" :key="index">
+                <li >
                     <div class="goodDetaiSwipe">
                         <mt-swipe :auto="4000">
-                            <mt-swipe-item v-for="list in goodDetail.homeBright">
-                                <img :src="list.swipe" alt="图片">
+                            <mt-swipe-item v-for="g in gallery">
+                                <img :src="getImgUrl(g.media_url)" alt="图片">
                             </mt-swipe-item>
                         </mt-swipe>
                     </div>
                     <div class="goodDetailMain">
-                        <div class="gooDetailNumber">商品编号：{{goodDetail.number}}</div>
-                        <div class="goodDetailName">{{goodDetail.homeName}}</div>
+                        <div class="gooDetailNumber">商品编号：{{goodDetail.goodsCode}}</div>
+                        <div class="goodDetailName">{{goodDetail.goodsName}}</div>
                         <div style="text-align: justify;font-size: 0.348rem;">
-                            <span style="margin-left:-.2rem;color:#FF4B3D;">【{{goodDetail.homeBright}}】</span>
-                          {{goodDetail.homeTitle}}
+                            <span style="margin-left:-.2rem;color:#FF4B3D;">【{{goodDetail.brief}}】</span>
+                          {{goodDetail.brief}}
                         </div>
-                        <div class="goodDetailColor">{{goodDetail.color}}</div>
-                        <div class="goodDetailPaid">￥{{goodDetail.homePrice}}</div>
+                        <div class="goodDetailPaid">￥{{goodDetail.unitPrice}}</div>
                     </div>
-                    
+
                     <div class="goodDetailValue">
                         <div class="_Value">购买数量：</div>
                         <div class="_cartNumber" style="margin-left: 2rem;">
-                            <a href="javascript:;" @click="jian(index)" class="goodDetailReduce">-</a>
-                            <input type="text" v-model="goodDetail.homeValue" readonly="readonly"/>
-                            <a href="javascript:;" @click="jia(index)" class="goodDetailAdd">+</a>
+                            <a href="javascript:;" @click="decrease()" class="goodDetailReduce">-</a>
+                            <input type="text" v-model="amount" readonly="readonly"/>
+                            <a href="javascript:;" @click="increase()" class="goodDetailAdd">+</a>
                         </div>
                     </div>
 
                     <Detail-Layer></Detail-Layer>
-                  
+
                     <div class="goodDetailBox">
                         <mt-navbar v-model="selected" >
-                            <mt-tab-item id="tab-container1">图文详情</mt-tab-item>
-                            <mt-tab-item id="tab-container2">参数</mt-tab-item>
+                            <mt-tab-item id="tab-container1">规格详情</mt-tab-item>
+                            <mt-tab-item id="tab-container2">参数属性</mt-tab-item>
                         </mt-navbar>
 
 
                         <mt-tab-container v-model="selected" swipeable>
                             <mt-tab-container-item id="tab-container1">
-                               <div class="goodDetailImg">
-                                   <p v-for="Image in goodDetail.Images">
-                                       <img v-bind:src="Image.one" alt="详情图片">
-                                    </p>
+                               <div class="goodDetailSpecification">
+                                 <table border="1px">
+                                   <tr>
+                                     <td>名称</td>
+                                     <td>规格值</td>
+                                   </tr>
+                                   <tr v-for="s in specification">
+                                     <td>{{ s.specificationName }}</td>
+                                     <td>{{ s.specificationValue }}</td>
+                                   </tr>
+                                 </table>
                                 </div>
                             </mt-tab-container-item>
 
                             <mt-tab-container-item id="tab-container2">
-                                <div class="peizhi" v-html="goodDetail.homePeizhi"></div>
+                                <!--<div class="peizhi" v-html="goodDetail.homePeizhi"></div>-->
+                                <div class="goodDetailAttribute">
+                                  <table border="1px">
+                                    <tr>
+                                      <td>规格值</td>
+                                    </tr>
+                                    <tr v-for="a in attribute">
+                                      <td>{{ a.attributeValue }}</td>
+                                    </tr>
+                                  </table>
+                                </div>
                             </mt-tab-container-item>
                         </mt-tab-container>
 
@@ -89,9 +105,9 @@
                                 <a href="javascript:void(0);" @click="pay(goodDetail.id,goodDetail.homeValue)">提交订单</a>
                             </div>
                         </div>
-                       
+
                     </div>
-                    
+
                 </li>
             </ul>
       </div>
@@ -111,7 +127,12 @@ export default {
       active: "1",
       goodDetailHeader: "商品详情",
       selected: "tab-container1",
-      goodDetail: [],
+      goodDetail:{},
+      attribute:[],
+      gallery:[],
+      specification:[],
+      comment:[],
+      amount:1,
       cartlength: 0
     };
   },
@@ -119,7 +140,7 @@ export default {
     DetailHeader,
     DetailLayer
   },
-  computed: {   
+  computed: {
     paid: function() {
       var paid = 0;
       for (var i in this.goodDetail) {
@@ -144,22 +165,24 @@ export default {
   created() {
     var _this = this;
     var id = this.$route.query.id;
-    axios.get("/static/ceshi.json").then(res => {
-      for (var i = 0; i < res.data.data.home.length;i++){
-        if (res.data.data.home[i].id == id ) {
-            _this.goodDetail.push(res.data.data.home[i]);
-        }
-      }
+
+    axios.get("/v1/mall/goods/detail/"+id).then(res => {
+      console.log(res.data)
+      _this.gallery = res.data.gallery
+      _this.goodDetail = res.data.goods
+      _this.attribute = res.data.attribute
+      _this.specification = res.data.specification
+
     });
 
-    axios.get("/static/ceshi.json").then(res => {
-      for (var i = 0; i < res.data.data.set.length;i++){
-        if (res.data.data.set[i].id == id ) {
-            _this.goodDetail.push(res.data.data.set[i]);
-        }
-      }
-    });
-   
+    // axios.get("/static/ceshi.json").then(res => {
+    //   for (var i = 0; i < res.data.data.set.length;i++){
+    //     if (res.data.data.set[i].id == id ) {
+    //         _this.goodDetail.push(res.data.data.set[i]);
+    //     }
+    //   }
+    // });
+
   },
 
   methods: {
@@ -172,6 +195,9 @@ export default {
            price:index.homePrice
        }
         this.$stor.dispatch("setGoods",data)
+    },
+    getImgUrl:function(imgUrl) {
+      return '/v1/filecenter/download/'+imgUrl;
     },
     // 点击按钮时，首先判断该商品是否在购物车已存在，如果存在则不再加入
     add: function(index) {
@@ -201,15 +227,15 @@ export default {
         MessageBox("提示", "商品已存在购物车");
       }
     },
-    jia: function(index) {
-      this.goodDetail[index].homeValue++;
-  
+    increase: function() {
+      this.amount++;
+
     },
-    jian: function(index) {
-      if (this.goodDetail[index].homeValue == 1) {
-        this.goodDetail[index].homeValue = 1;
+    decrease: function() {
+      if (this.amount == 1) {
+        this.amount = 1;
       } else {
-        this.goodDetail[index].homeValue--;
+        this.amount--;
       }
     },
     //返回上一级
@@ -429,7 +455,7 @@ export default {
 
             .collection-box {
                 text-align: center;
-                
+
             }
 
             i {
@@ -488,19 +514,19 @@ export default {
 .purchase a {
 }
 
-.goodDetailImg {
+.goodDetailSpecification {
     margin-top: 4px;
     margin-bottom: 6px;
 }
 
-.goodDetailImg img {
-    width: 100%;
-    height: auto;
-    display: block;
+.goodDetailAttribute {
+  margin-top: 4px;
+  margin-bottom: 6px;
 }
 
 table td {
-    font-size: 0.31rem;
+    width 4.6rem
+    font-size: 0.4rem;
     text-align: center;
     color: #000;
 }

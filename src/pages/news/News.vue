@@ -3,7 +3,7 @@
     <News-Header></News-Header>
     <News-Container :NewsContainer="NewsContainer"></News-Container>
     <News-Footer></News-Footer>
-        
+
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import axios from 'axios';
 import NewsHeader from '../../pages/news/component/NewsHeader'
 import NewsContainer from '../../pages/news/component/NewsContainer'
-import NewsFooter from '../Footer'
+import NewsFooter from '../../common/Footer'
 export default {
     name:"information",
     components:{
@@ -29,7 +29,7 @@ export default {
         axios.get("/static/ceshi.json").then(function(res) {
            _this.NewsContainer=res.data.data.news
         })
-       
+
     },
     methods: {
          open:function(id){
@@ -37,7 +37,7 @@ export default {
         },
     }
 
-  
+
 }
 </script>
 
