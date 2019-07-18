@@ -4,16 +4,16 @@
   <div class="calssify-con" >
         <div class="calssify-left" ref="wrapper">
             <ul class="calssify-left-ul" >
-                <li v-for="(list,index) in left" :key="index" @click="qiehuan(index)" :class="{active:index===classifyIndex}">
-                    {{list.name}}
+                <li v-for="(list,index) in left" :key="index" @click="swichCategory(index)" :class="{active:index===classifyIndex}">
+                    {{list.categoryName}}
                 </li>
             </ul>
         </div>
         <div class="calssify-rigth" ref="wrapper2">
             <ul class="calssify-left-ul">
-                <li v-for="(list,index) in right.rigth_data" :key="index" @click="goDetails(list.id)">
-                     <img v-lazy="list.img">
-                    <span>{{list.name}}</span>
+                <li v-for="(list,index) in right" :key="index" @click="goDetails(list.goodsId)">
+                     <img v-lazy="getImgUrl(list.listPictureUrl)">
+                    <span>{{list.goodsName}}</span>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       left: [],
-      rigth: [],
+      right: [],
       list: [],
       ce: [],
       key2: "",
@@ -43,35 +43,42 @@ export default {
     "v-footer": footer,
     ClassifyHeader
   },
-  //    mounted(){
-  //       this.$nextTick(() => {
-  //         this.scroll = new BScroll(this.$refs.wrapper, {})
-  //         this.scroll = new BScroll(this.$refs.wrapper2, {})
-  //       })
-  //   },
   computed: {
     ...mapGetters(["this.$store.state.sindex"])
   },
   created() {
     var _this = this;
-    axios.get("/static/ceshi.json").then(function(res) {
-      console.log(res)
-     _this.left = res.data.data.classify.left;
-      _this.list = res.data.data.classify.right;
-      _this.right = _this.list[0];
+    axios.get("/v1/mall/category/list/1").then(function(res) {
+     _this.left = res.data;
+      if(_this.left){
+        let first = _this.left[0];
+        //获取对应商品
+        _this.getGoodsByCategory(first.categoryId)
+      }
     });
+
   },
   methods: {
-    qiehuan(index) {
+    swichCategory(index) {
       var _this = this;
+      let checked = _this.left[index];
       _this.classifyIndex = index;
-      _this.right = _this.list[index];
+      _this.getGoodsByCategory(checked.categoryId)
+    },
+    getImgUrl:function(imgUrl) {
+      return '/v1/filecenter/download/'+imgUrl;
+    },
+    getGoodsByCategory:function(categoryId) {
+      var _this = this;
+      axios.get("/v1/mall/goods/page",{params:{page:1,limit:20, categoryId:categoryId}}).then(function(ret) {
+        _this.right = ret.data.content;
+      });
     },
     goDetails(id) {
       console.log(id);
       this.$router.push({
-        path: "GoodDetail.vue",
-        query: { id: id }
+        path: "good-detail",
+        query: { goodsId: id }
       });
     }
   }
@@ -95,7 +102,7 @@ export default {
     padding-top: 1.45rem;
 
     .calssify-left {
-        flex: 0 0 2.9rem;
+        flex: 0 0 2.2rem;
         width: 4rem;
         height: 100%;
         background: #f6f6f6;

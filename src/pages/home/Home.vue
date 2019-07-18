@@ -37,10 +37,6 @@ export default {
   methods:{
     getData:function(){
       var _this=this
-      // axios.get("/static/ceshi.json").then(function(res){
-      //   //console.log(res)
-      //   _this.todos=res.data.data.home
-      // })
       axios.get("/v1/mall/home/recommend/page").then(function(res){
         //console.log(res)
         _this.todos=res.data.content
