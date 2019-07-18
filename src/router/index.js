@@ -18,6 +18,7 @@ import orderDetail from "../pages/OrderDetail"
 import pay from "../pages/pay/Pay"
 import address from "../pages/Address"
 import addAddress from "../pages/AddAddress"
+import sellerGoods from "../pages/seller/SellerGoods"
 Vue.use(Router)
 
 export default new Router({
@@ -30,6 +31,12 @@ export default new Router({
       path: '/good-detail',
       name: 'good-detail',
       component: goodDetail,
+      meta:{index:0}
+    },
+    {
+      path: '/seller-goods',
+      name: 'seller-goods',
+      component: sellerGoods,
       meta:{index:0}
     },
     {

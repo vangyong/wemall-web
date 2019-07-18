@@ -27,7 +27,7 @@
          </div>
          <div class="container-seller-2">
            <p class="" v-for="list in container_seller">
-             <img :src="list.img">
+             <img :src="list.img" @click="sellerSwich(list.id)">
              <span>{{list.name}}</span>
            </p>
          </div>
@@ -71,7 +71,7 @@
           </div>
           <div class="container-buyer-2">
             <p class="" v-for="list in container_buyer">
-              <img :src="list.img">
+              <img :src="list.img" @click="buyerSwich(list.id)">
               <span>{{list.name}}</span>
             </p>
           </div>
@@ -89,36 +89,45 @@ export default {
           container_seller:[
               {
                   img:"/static/img/111.png",
+                  id:"seller-shop",
                   name:"店铺管理"
               },
                {
                   img:"/static/img/222.png",
+                  id:"seller-goods",
                   name:"商品管理"
               },
                {
                   img:"/static/img/333.png",
+                  id:"seller-order",
                   name:"订单管理"
               }, {
                   img:"/static/img/444.png",
+                  id:"seller-statistics",
                   name:"统计对账"
               }
           ],
           container_buyer:[
             {
               img:"/static/img/111.png",
+              id:"buyer-order",
               name:"我的订单"
             },
             {
               img:"/static/img/222.png",
+              id:"buyer-red-packet",
               name:"红包"
             }, {
               img:"/static/img/333.png",
+              id:"buyer-coupon",
               name:"优惠券"
             },{
               img:"/static/img/444.png",
+              id:"buyer-register-seller",
               name:"入驻商城"
             },{
               img:"/static/img/444.png",
+              id:"buyer-contact",
               name:"联系客服"
             },
           ]
@@ -144,13 +153,22 @@ export default {
         console.log("error");
       });
     },
-    get2:function() {
-      this.$http.get('/v1/user/2').then(response => {
-        console.log(response.data);
-        // this.someData = response.body;
-      }, response => {
-        console.log("error");
-      });
+    buyerSwich:function(id) {
+      if(id='buyer-order'){
+
+      }else if(id='buyer-register-seller'){
+
+      }
+    },
+    sellerSwich:function(id) {
+      if(id=='seller-shop'){
+
+      }else if(id=='seller-goods'){
+        this.$router.push({
+          path: "seller-goods",
+          query: { goodsId: 1 }
+        });
+      }
     }
   }
 }
@@ -158,9 +176,6 @@ export default {
 
 
 <style lang="stylus" scoped>
-
-
-
 
 .container {
     width: 100%;
