@@ -3,6 +3,7 @@
     <!--<News-Header></News-Header>-->
     <!--<News-Container :NewsContainer="NewsContainer"></News-Container>-->
     <div> this is seller goods</div>
+    <div> <button @click="publish()"> 链接</button></div>
     <News-Footer></News-Footer>
 
   </div>
@@ -33,8 +34,8 @@ export default {
 
     },
     methods: {
-         open:function(id){
-            this.$router.push({path:"newsDetail",query:{id:id}})
+         publish:function(){
+            this.$router.push({path:"seller-goods-publish",query:{id:1}})
         },
     }
 

@@ -14,6 +14,10 @@ vue全家桶 vue2.0+vuex+axios+better-scroll还有就是miut-ui组件库
 
 > [axios](https://www.npmjs.com/package/axios)：用来请求后端api数据
 
+> [vue-quill-editor](https://www.npmjs.com/package/vue-quill-editor): 富文本编辑
+
+> [tinymce-vue](https://github.com/tinymce/tinymce-vue): 文本编辑
+
 ## 实现功能
 商品详情、文章详情、订单详情、订单提交、分类管理、商品搜索、商品/文章收藏、购物车功能(增、删、单全选)、积分动态获取、订单管理、收货地址管理、localstorage储存等功能
 
@@ -31,7 +35,3 @@ npm run build
 
 # 后台运行
 nohup npm run dev >/dev/null 2>&1 &
-
-接口调用个人中心
-优惠券
-换鼓励金

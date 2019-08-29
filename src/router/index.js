@@ -19,6 +19,7 @@ import pay from "../pages/pay/Pay"
 import address from "../pages/Address"
 import addAddress from "../pages/AddAddress"
 import sellerGoods from "../pages/seller/SellerGoods"
+import goodsPublish from "../pages/seller/GoodsPublish"
 Vue.use(Router)
 
 export default new Router({
@@ -37,6 +38,12 @@ export default new Router({
       path: '/seller-goods',
       name: 'seller-goods',
       component: sellerGoods,
+      meta:{index:0}
+    },
+    {
+      path: '/seller-goods-publish',
+      name: 'seller-goods-publish',
+      component: goodsPublish,
       meta:{index:0}
     },
     {
