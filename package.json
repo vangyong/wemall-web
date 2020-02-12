@@ -18,7 +18,7 @@
     "mint-ui": "^2.2.10",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "tinymce": "^5.0.12",
+    "tinymce": "^5.1.4",
     "vant": "^0.10.5",
     "vue": "^2.5.2",
     "vue-navigation": "^1.1.3",
