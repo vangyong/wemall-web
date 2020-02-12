@@ -13,7 +13,7 @@
     "@tinymce/tinymce-vue": "^2.1.0",
     "ajv": "^6.10.2",
     "ajv-keywords": "^3.4.1",
-    "axios": "^0.17.1",
+    "axios": "^0.18.1",
     "fsevents": "^2.1.2",
     "mint-ui": "^2.2.10",
     "stylus": "^0.54.5",
